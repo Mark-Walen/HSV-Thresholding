@@ -145,7 +145,7 @@ class VideoThread(QtCore.QThread):
 
     def run(self):
         # Set camera path and capture from web cam
-        cap = cv2.VideoCapture("http://192.168.31.41:9081/")
+        cap = cv2.VideoCapture(2)
         while self._run_flag:
             ret, cv_img = cap.read()
             if ret:
