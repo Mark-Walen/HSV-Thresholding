@@ -115,7 +115,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def convert_cv_qt(self, cv_img):
         rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
         # Convert BGR to HSV
-        hsv = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2HSV)
+        hsv = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2HSV)
         # define range of color in HSV
         lower_H = self.ui.lower_hue_horizontalSlider.value()
         lower_S = self.ui.lower_saturation_horizontalSlider.value()
@@ -145,7 +145,7 @@ class VideoThread(QtCore.QThread):
 
     def run(self):
         # Set camera path and capture from web cam
-        cap = cv2.VideoCapture(2)
+        cap = cv2.VideoCapture("http://192.168.31.41:9081/")
         while self._run_flag:
             ret, cv_img = cap.read()
             if ret:
